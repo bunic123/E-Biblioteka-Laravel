@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('vrati-sve-knjige', [KnjigaKontroler::class, 'vratiSveKnjige']);
 Route::delete('obrisi-knjigu/{id}', [KnjigaKontroler::class, 'obrisiKnjigu']);
 Route::get('izmena/{id}', [KnjigaKontroler::class, 'izmenaKnjige']);
+Route::post('azuriraj/{id}', [KnjigaKontroler::class, 'azurirajKnjigu']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

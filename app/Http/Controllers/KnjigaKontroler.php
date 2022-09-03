@@ -33,4 +33,20 @@ class KnjigaKontroler extends Controller
 
         return response()->json(['knjiga' => $knjiga]);
     }
+
+
+    public function azurirajKnjigu($id, Request $request)
+    {
+        DB::table('knjigas')
+            ->where('id', $id)
+            ->update([
+                'naziv' => $request->naziv,
+                'opis' => $request->opis,
+                'pisac' => $request->pisac,
+                'cena' => $request->cena,
+                'kategorija' => $request->kategorija
+            ]);
+
+        return response()->json(['poruka' => 'Knjiga je azurirana!']);
+    }
 }
