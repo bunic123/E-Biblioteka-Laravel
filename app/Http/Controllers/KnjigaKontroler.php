@@ -21,10 +21,16 @@ class KnjigaKontroler extends Controller
     public function obrisiKnjigu($id)
     {
 
-        LOG::debug("USAO OVDE");
-
         DB::table('knjigas')->where('id', $id)->delete();
 
         return response()->json(['poruka' => 'Knjiga je obrisana!']);
+    }
+
+
+    public function izmenaKnjige($id)
+    {
+        $knjiga = DB::table('knjigas')->where('id', $id)->first();
+
+        return response()->json(['knjiga' => $knjiga]);
     }
 }
