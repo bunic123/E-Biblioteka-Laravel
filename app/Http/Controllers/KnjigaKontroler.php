@@ -70,4 +70,17 @@ class KnjigaKontroler extends Controller
 
         return response()->json(['knjige' => $knjige]);
     }
+
+
+    public function filter($selectValue, $filterSort)
+    {
+        $knjige = DB::table('knjigas')->orderBy("$selectValue", "$filterSort")->get();
+
+        if ($filterSort === 'ASC')
+            $filterSort = 'DESC';
+        else
+            $filterSort = 'ASC';
+
+        return response()->json(['knjige' => $knjige, 'filterSort' => $filterSort]);
+    }
 }
