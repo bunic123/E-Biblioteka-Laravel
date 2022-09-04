@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 
 class KnjigaKontroler extends Controller
@@ -48,5 +47,19 @@ class KnjigaKontroler extends Controller
             ]);
 
         return response()->json(['poruka' => 'Knjiga je azurirana!']);
+    }
+
+
+    public function sacuvajKnjigu(Request $request)
+    {
+        DB::table('knjigas')->insert([
+            'naziv' => $request->naziv,
+            'opis' => $request->opis,
+            'pisac' => $request->pisac,
+            'cena' => $request->cena,
+            'kategorija' => $request->kategorija,
+        ]);
+
+        return response()->json(['poruka' => 'Knjiga je sacuvana!']);
     }
 }
