@@ -62,4 +62,12 @@ class KnjigaKontroler extends Controller
 
         return response()->json(['poruka' => 'Knjiga je sacuvana!']);
     }
+
+
+    public function pretraga($nazivKnjige)
+    {
+        $knjige = DB::table('knjigas')->where("naziv", "like", "%$nazivKnjige%")->get();
+
+        return response()->json(['knjige' => $knjige]);
+    }
 }

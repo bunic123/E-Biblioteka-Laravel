@@ -22,6 +22,8 @@ Route::get('izmena/{id}', [KnjigaKontroler::class, 'izmenaKnjige']);
 Route::post('azuriraj/{id}', [KnjigaKontroler::class, 'azurirajKnjigu']);
 Route::post('sacuvaj', [KnjigaKontroler::class, 'sacuvajKnjigu']);
 Route::post('registracija', [AuthKontroler::class, 'registracija']);
+Route::post('prijava', [AuthKontroler::class, 'prijava']);
+Route::get('pretraga/{nazivKnjige}', [KnjigaKontroler::class, 'pretraga']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

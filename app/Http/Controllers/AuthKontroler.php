@@ -14,13 +14,35 @@ class AuthKontroler extends Controller
             'ime_prezime' => $request->ime_prezime,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'broj_telefona' => $request->broj_telefona
+            'broj_telefona' => $request->broj_telefona,
+            'admin' => 'ne'
         ]);
 
-        $user->createToken("TokenRegister-"  . $user->email)->plainTextToken;
 
         return response()->json([
             'poruka' => 'Uspesno ste se registrovali!'
         ]);
+    }
+
+
+
+
+    public function prijava(Request $request)
+    {
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'poruka' => 'Pokusajte ponovo!'
+            ]);
+        } else {
+            return response()->json(
+                [
+                    'poruka' => 'Uspesno ste se prijavili!',
+                    'admin' => $user->admin,
+                ]
+            );
+        }
     }
 }
