@@ -39,7 +39,7 @@ class AuthKontroler extends Controller
         } else {
             return response()->json(
                 [
-                    'poruka' => 'Uspesno ste se prijavili!',
+                    'poruka' => 'Uspesno ste se prijavili !',
                     'admin' => $user->admin,
                 ]
             );
