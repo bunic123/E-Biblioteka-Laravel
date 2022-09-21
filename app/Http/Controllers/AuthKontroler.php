@@ -20,7 +20,7 @@ class AuthKontroler extends Controller
 
 
         return response()->json([
-            'poruka' => 'Uspesno ste se registrovali!'
+            'poruka' => 'Uspesno ste se registrovali !'
         ]);
     }
 
